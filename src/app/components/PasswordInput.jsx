@@ -4,8 +4,11 @@ import { bindActionCreators } from 'redux';
 
 import { updatePassword } from '../services/login/actions';
 
-const passwordInputColor = (pwdStrength) => {
-  if (pwdStrength.valid) {
+const passwordInputColor = (password) => {
+  if (password.value.length === 0) {
+    return '#eaeaf4';
+  }
+  if (password.passwordStrength.valid) {
     return '#17D499';
   }
   return '#F79682';
@@ -15,7 +18,7 @@ const passwordStrengthCounter = (pwdStrength) => {
   let count = 0;
 
   Object.keys(pwdStrength.tests).forEach((el) => {
-    if (el === true) {
+    if (pwdStrength.tests[el] === true) {
       count += 1;
     }
   });
@@ -54,9 +57,9 @@ const PasswordInput = props => (
     <div>{props.label}</div>
     <input
       type={props.type}
-      className="textinput"
+      className="textinput textinput-pwd"
       style={{
-        borderColor: passwordInputColor(props.password.passwordStrength),
+        borderColor: passwordInputColor(props.password),
       }}
       onChange={(e) => {
         props.updatePassword(e.target.value);

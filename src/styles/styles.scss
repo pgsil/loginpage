@@ -3,22 +3,23 @@
 @import "components/app";
 @import "components/loginPage";
 @import "components/inputs";
+@import "components/passwordForm";
 input {
-  @extend %form-reset-input;
+    @extend %form-reset-input;
 }
 
 label {
-  @extend %form-reset-label;
+    @extend %form-reset-label;
 }
 
 select {
-  @extend %form-reset-select;
+    @extend %form-reset-select;
 }
 
 button {
-  @extend %form-reset-button;
+    @extend %form-reset-button;
 }
 
 textarea {
-  @extend %form-reset-textarea;
+    @extend %form-reset-textarea;
 }

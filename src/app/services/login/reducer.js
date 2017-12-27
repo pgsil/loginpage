@@ -21,7 +21,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case types.UPDATE_PASSWORD:
-      return { ...state, login: { ...state.login, password: { ...action.data } } };
+      return { ...state, password: action.data };
     default:
       return { ...state };
   }

@@ -13,7 +13,6 @@ export const updatePassword = str => (dispatch) => {
   const hasNumber = /\d/.test(str);
 
   let value = [isLengthValid, hasUpperCase, hasNumber].filter(el => el === true);
-  console.log(value);
   value = value.length;
 
   const pwd = {

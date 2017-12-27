@@ -6,4 +6,5 @@
     background: white;
     color: black;
     border: 1px solid $gray;
+    transition: border-color 0.2s ease-in-out;
 }
