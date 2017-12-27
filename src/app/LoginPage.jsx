@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import updateLogin from './services/login/actions';
+import Input from './components/Input';
+import PasswordInput from './components/PasswordInput';
+import Brand from './components/Brand';
+
+import { updateLogin } from './services/login/actions';
 
 class LoginPage extends Component {
   constructor(props) {
@@ -22,7 +26,21 @@ class LoginPage extends Component {
   }
 
   render() {
-    return <span>Hello world!</span>;
+    return (
+      <section className="login-page">
+        <div className="login-wrapper">
+          <div className="login-header">
+            <Brand />
+            <h1 className="create-account">Crie sua conta</h1>
+          </div>
+          <div className="login-inputs">
+            <Input label="Nome completo" />
+            <Input label="E-mail" />
+            <PasswordInput label="Senha" />
+          </div>
+        </div>
+      </section>
+    );
   }
 }
 

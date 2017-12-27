@@ -1,0 +1,30 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  .login-wrapper {
+    width: 510px;
+    padding: 50px;
+    background: white;
+    margin: auto;
+    .login-inputs,
+    .login-header {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .input-element {
+      margin-bottom: 20px;
+    }
+  }
+  .brand {
+    font-size: 45px;
+    color: $brandBlue;
+  }
+  .create-account {
+    font-weight: 300;
+    color: black;
+  }
+}

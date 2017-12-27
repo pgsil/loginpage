@@ -3,10 +3,6 @@ import React from 'react';
 
 import LoginPage from './LoginPage';
 
-const App = () => (
-  <div>
-    <LoginPage />
-  </div>
-);
+const App = () => <LoginPage />;
 
 export default App;
