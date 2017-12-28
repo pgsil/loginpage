@@ -60,7 +60,6 @@ const PasswordInput = props => (
     <input
       type="password"
       className="textinput textinput-pwd"
-      placeholder="Digite sua senha"
       style={{
         borderColor: passwordInputColor(props.password),
       }}
