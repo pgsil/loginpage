@@ -6,7 +6,7 @@ import Input from './components/Input';
 import PasswordInput from './components/PasswordInput';
 import Brand from './components/Brand';
 
-import { updateLogin } from './services/login/actions';
+import { updatePasswordConfirmation, updateEmail } from './services/login/actions';
 
 class LoginPage extends Component {
   constructor(props) {
@@ -35,8 +35,22 @@ class LoginPage extends Component {
           </div>
           <div className="login-inputs">
             <Input label="Nome completo" />
-            <Input label="E-mail" />
+            <Input
+              label="E-mail"
+              type="email"
+              onChange={{
+                fn: this.props.updateEmail,
+              }}
+            />
             <PasswordInput label="Senha" />
+            <Input
+              onChange={{
+                fn: this.props.updatePasswordConfirmation,
+                args: [this.props.login.password.value],
+              }}
+              type="password"
+            />
+            <button className={`btn ${this.signupButtonClass()}`}>Crie sua conta</button>
           </div>
         </div>
       </section>
@@ -53,6 +67,7 @@ const mapStateToProps = ({ login }, ownProps) =>
     ownProps,
   );
 
-const mapDispatchToProps = dispatch => bindActionCreators({ updateLogin }, dispatch);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ updatePasswordConfirmation, updateEmail }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

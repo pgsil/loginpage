@@ -23,9 +23,25 @@
         font-size: 45px;
         color: $brandBlue;
         font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+        margin: 0;
+        margin-bottom: 15px;
     }
     .create-account {
         font-weight: 300;
         color: black;
+        margin: 0;
+        margin-bottom: 25px;
     }
+    .invalid-input {
+        border-color: $red;
+    }
+    .valid-input {
+        border-color: $green;
+    }
+}
+
+.btn {
+    width: 380px;
+    height: 35px;
+    background: $green;
 }
