@@ -1,10 +1,20 @@
 .textinput {
-    box-sizing: border-box;
-    width: 375px;
-    height: 45px;
-    padding: 15px;
-    background: white;
-    color: black;
-    border: 1px solid $gray;
-    transition: border-color 0.2s ease-in-out;
+  box-sizing: border-box;
+  width: 375px;
+  height: 45px;
+  padding: 15px;
+  background: white;
+  color: black;
+  border: 1px solid $darkGray;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.input-label {
+  margin-bottom: 5px;
+  color: $darkGray;
+}
+
+::placeholder {
+  color: $darkGray;
+  font-weight: bold;
 }

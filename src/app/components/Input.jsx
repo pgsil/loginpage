@@ -2,7 +2,7 @@ import React from 'react';
 
 const Input = props => (
   <div className="input-element">
-    <div>{props.label}</div>
+    <div className="input-label">{props.label}</div>
     <input type={props.type} className="textinput" />
   </div>
 );

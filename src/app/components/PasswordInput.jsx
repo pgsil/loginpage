@@ -4,9 +4,11 @@ import { bindActionCreators } from 'redux';
 
 import { updatePassword } from '../services/login/actions';
 
+import PasswordRequirement from './PasswordRequirement';
+
 const passwordInputColor = (password) => {
   if (password.value.length === 0) {
-    return '#eaeaf4';
+    return '#b6b9d0';
   }
   if (password.passwordStrength.valid) {
     return '#17D499';
@@ -26,38 +28,39 @@ const passwordStrengthCounter = (pwdStrength) => {
   switch (count) {
     case 1:
       return [
-        <div className="pwd-strength-red" />,
-        <div className="pwd-strength-gray" />,
-        <div className="pwd-strength-gray" />,
+        <div className="password-strength-indicator pwd-strength-red" />,
+        <div className="password-strength-indicator pwd-strength-gray" />,
+        <div className="password-strength-indicator pwd-strength-gray" />,
       ];
     case 2:
       return [
-        <div className="pwd-strength-yellow" />,
-        <div className="pwd-strength-yellow" />,
-        <div className="pwd-strength-gray" />,
+        <div className="password-strength-indicator pwd-strength-yellow" />,
+        <div className="password-strength-indicator pwd-strength-yellow" />,
+        <div className="password-strength-indicator pwd-strength-gray" />,
       ];
     case 3:
       return [
-        <div className="pwd-strength-green" />,
-        <div className="pwd-strength-green" />,
-        <div className="pwd-strength-green" />,
+        <div className="password-strength-indicator pwd-strength-green" />,
+        <div className="password-strength-indicator pwd-strength-green" />,
+        <div className="password-strength-indicator pwd-strength-green" />,
       ];
 
     default:
       return [
-        <div className="pwd-strength-gray" />,
-        <div className="pwd-strength-gray" />,
-        <div className="pwd-strength-gray" />,
+        <div className="password-strength-indicator pwd-strength-gray" />,
+        <div className="password-strength-indicator pwd-strength-gray" />,
+        <div className="password-strength-indicator pwd-strength-gray" />,
       ];
   }
 };
 
 const PasswordInput = props => (
   <div className="input-element">
-    <div>{props.label}</div>
+    <div className="input-label">{props.label}</div>
     <input
-      type={props.type}
+      type="password"
       className="textinput textinput-pwd"
+      placeholder="Digite sua senha"
       style={{
         borderColor: passwordInputColor(props.password),
       }}
@@ -68,6 +71,9 @@ const PasswordInput = props => (
     <div className="password-strength">
       {passwordStrengthCounter(props.password.passwordStrength)}
     </div>
+    <PasswordRequirement label="Pelo menos 6 caracteres" test="isLengthValid" />
+    <PasswordRequirement label="Pelo menos 1 letra maiúscula" test="hasUpperCase" />
+    <PasswordRequirement label="Pelo menos 1 número" test="hasNumber" />
   </div>
 );
 
