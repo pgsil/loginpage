@@ -27,8 +27,8 @@ export const updateEmail = str => (dispatch) => {
   });
 };
 
-export const updatePassword = str => async (dispatch, getState) => {
-  const state = await getState();
+export const updatePassword = str => (dispatch, getState) => {
+  const state = getState();
 
   const isLengthValid = str.length >= 6;
   const hasUpperCase = str !== str.toLowerCase();

@@ -7,6 +7,7 @@ const initialState = {
   validEmail: false,
   password: {
     value: '',
+    valid: false,
     confirmationValue: '',
     passwordStrength: {
       value: 0,
@@ -16,7 +17,6 @@ const initialState = {
         hasNumber: false,
       },
     },
-    valid: false,
   },
   pwdConfirmed: false,
 };
