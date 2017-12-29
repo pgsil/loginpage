@@ -66,7 +66,7 @@ const PasswordInput = props => (
       autoComplete="new-password"
       type="password"
       className={`textinput textinput-pwd ${borderColorClass(
-        props.password.passwordStrength.valid,
+        props.password.valid,
         props.password.value,
       )}`}
       onChange={(e) => {

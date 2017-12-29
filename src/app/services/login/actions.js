@@ -56,8 +56,8 @@ export const updatePassword = str => async (dispatch, getState) => {
         hasUpperCase,
         hasNumber,
       },
-      valid: isLengthValid && hasUpperCase && hasNumber,
     },
+    valid: isLengthValid && hasUpperCase && hasNumber,
   };
 
   dispatch({

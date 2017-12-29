@@ -65,7 +65,7 @@ class LoginPage extends Component {
                 type="password"
                 label="Confirme sua senha"
                 autocomplete="new-password"
-                validInput={this.props.login.pwdConfirmed}
+                validInput={this.props.login.pwdConfirmed && this.props.login.password.valid}
                 inputValue={this.props.login.password.confirmationValue}
               />
               <button
@@ -80,6 +80,14 @@ class LoginPage extends Component {
                     el.classList.remove('btn-bounce');
                   }, 200);
                 }}
+                disabled={
+                  !(
+                    this.props.login.validName &&
+                    this.props.login.validEmail &&
+                    this.props.login.password.valid &&
+                    this.props.login.pwdConfirmed
+                  )
+                }
               >
                 Criar conta
               </button>

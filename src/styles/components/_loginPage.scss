@@ -57,6 +57,9 @@
         &:hover {
             background: $btnGreenHover;
         }
+        &:disabled {
+            background: $gray;
+        }
     }
     .btn-bounce {
         animation: btnbounce 0.2s ease-in-out;

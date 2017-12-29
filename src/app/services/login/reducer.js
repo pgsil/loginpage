@@ -15,8 +15,8 @@ const initialState = {
         hasUpperCase: false,
         hasNumber: false,
       },
-      valid: false,
     },
+    valid: false,
   },
   pwdConfirmed: false,
 };
