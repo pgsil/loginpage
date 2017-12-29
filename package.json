@@ -3,6 +3,10 @@
   "version": "1.0",
   "main": "index.jsx",
   "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --inline --hot --open",
+    "build": "webpack --env=dev --progress --profile --colors"
+  },
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -34,8 +38,5 @@
     "style-loader": "^0.19.1",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.9.7"
-  },
-  "scripts": {
-    "start": "webpack-dev-server --inline --hot --open"
   }
 }

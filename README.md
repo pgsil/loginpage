@@ -1,17 +1,6 @@
-# react-quickly
+# loginpage
 
-it's a ready-to-use react config with all my essentials
-
-### included:
-
-* react
-* react-dom
-* babel
-* babel-stage-0
-* eslint
-* html-webpack-plugin
-* sass support
-* webpack-dev-server
+it's a simple react signup (not login!) page with info validation using redux
 
 ### how to use
 
