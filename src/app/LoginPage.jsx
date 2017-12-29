@@ -6,7 +6,7 @@ import Input from './components/Input';
 import PasswordInput from './components/PasswordInput';
 import Brand from './components/Brand';
 
-import { updatePasswordConfirmation, updateEmail } from './services/login/actions';
+import { updatePasswordConfirmation, updateEmail, updateName } from './services/login/actions';
 
 class LoginPage extends Component {
   constructor(props) {
@@ -33,25 +33,58 @@ class LoginPage extends Component {
             <Brand />
             <h1 className="create-account">Crie sua conta</h1>
           </div>
-          <div className="login-inputs">
-            <Input label="Nome completo" />
-            <Input
-              label="E-mail"
-              type="email"
-              onChange={{
-                fn: this.props.updateEmail,
-              }}
-            />
-            <PasswordInput label="Senha" />
-            <Input
-              onChange={{
-                fn: this.props.updatePasswordConfirmation,
-                args: [this.props.login.password.value],
-              }}
-              type="password"
-            />
-            <button className={`btn ${this.signupButtonClass()}`}>Crie sua conta</button>
-          </div>
+          <form autoComplete="on" method="POST">
+            <div className="login-inputs">
+              <Input
+                label="Nome completo"
+                autocomplete="name"
+                onChange={{
+                  fn: this.props.updateName,
+                  args: [null],
+                }}
+                validInput={this.props.login.validName}
+                inputValue={this.props.login.name}
+              />
+              <Input
+                label="E-mail"
+                type="email"
+                onChange={{
+                  fn: this.props.updateEmail,
+                  args: [null],
+                }}
+                validInput={this.props.login.validEmail}
+                inputValue={this.props.login.email}
+                autocomplete="email"
+              />
+              <PasswordInput label="Senha" />
+              <Input
+                onChange={{
+                  fn: this.props.updatePasswordConfirmation,
+                  args: [this.props.login.password.value],
+                }}
+                type="password"
+                label="Confirme sua senha"
+                autocomplete="new-password"
+                validInput={this.props.login.pwdConfirmed}
+                inputValue={this.props.login.password.confirmationValue}
+              />
+              <button
+                className="btn"
+                id="signup-btn"
+                onClick={(e) => {
+                  e.preventDefault();
+
+                  const el = document.getElementById('signup-btn');
+                  el.classList.add('btn-bounce');
+                  setTimeout(() => {
+                    el.classList.remove('btn-bounce');
+                  }, 200);
+                }}
+              >
+                Criar conta
+              </button>
+            </div>
+          </form>
         </div>
       </section>
     );
@@ -68,6 +101,6 @@ const mapStateToProps = ({ login }, ownProps) =>
   );
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ updatePasswordConfirmation, updateEmail }, dispatch);
+  bindActionCreators({ updatePasswordConfirmation, updateEmail, updateName }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

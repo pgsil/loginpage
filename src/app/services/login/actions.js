@@ -7,6 +7,16 @@ export const updateLogin = obj => (dispatch) => {
   });
 };
 
+export const updateName = str => (dispatch) => {
+  const validName = str.length > 2;
+
+  dispatch({
+    type: types.UPDATE_NAME,
+    name: str,
+    validName,
+  });
+};
+
 export const updateEmail = str => (dispatch) => {
   const validEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/.test(str);
 

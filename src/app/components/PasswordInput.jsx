@@ -6,14 +6,14 @@ import { updatePassword } from '../services/login/actions';
 
 import PasswordRequirement from './PasswordRequirement';
 
-const passwordInputColor = (password) => {
-  if (password.value.length === 0) {
-    return '#b6b9d0';
+const borderColorClass = (bool, str) => {
+  if (str !== undefined && str.length === 0 && bool !== undefined) {
+    return '';
   }
-  if (password.passwordStrength.valid) {
-    return '#17D499';
+  if (bool !== undefined) {
+    return bool ? 'valid-input' : 'invalid-input';
   }
-  return '#F79682';
+  return '';
 };
 
 const passwordStrengthCounter = (pwdStrength) => {
@@ -28,41 +28,47 @@ const passwordStrengthCounter = (pwdStrength) => {
   switch (count) {
     case 1:
       return [
-        <div className="password-strength-indicator pwd-strength-red" />,
-        <div className="password-strength-indicator pwd-strength-gray" />,
-        <div className="password-strength-indicator pwd-strength-gray" />,
+        <div className="password-strength-indicator pwd-strength-red" key="pwdstrindicator1" />,
+        <div className="password-strength-indicator pwd-strength-gray" key="pwdstrindicator2" />,
+        <div className="password-strength-indicator pwd-strength-gray" key="pwdstrindicator3" />,
       ];
     case 2:
       return [
-        <div className="password-strength-indicator pwd-strength-yellow" />,
-        <div className="password-strength-indicator pwd-strength-yellow" />,
-        <div className="password-strength-indicator pwd-strength-gray" />,
+        <div className="password-strength-indicator pwd-strength-yellow" key="pwdstrindicator1" />,
+        <div className="password-strength-indicator pwd-strength-yellow" key="pwdstrindicator2" />,
+        <div className="password-strength-indicator pwd-strength-gray" key="pwdstrindicator3" />,
       ];
     case 3:
       return [
-        <div className="password-strength-indicator pwd-strength-green" />,
-        <div className="password-strength-indicator pwd-strength-green" />,
-        <div className="password-strength-indicator pwd-strength-green" />,
+        <div className="password-strength-indicator pwd-strength-green" key="pwdstrindicator1" />,
+        <div className="password-strength-indicator pwd-strength-green" key="pwdstrindicator2" />,
+        <div className="password-strength-indicator pwd-strength-green" key="pwdstrindicator3" />,
       ];
 
     default:
       return [
-        <div className="password-strength-indicator pwd-strength-gray" />,
-        <div className="password-strength-indicator pwd-strength-gray" />,
-        <div className="password-strength-indicator pwd-strength-gray" />,
+        <div className="password-strength-indicator pwd-strength-gray" key="pwdstrindicator1" />,
+        <div className="password-strength-indicator pwd-strength-gray" key="pwdstrindicator2" />,
+        <div className="password-strength-indicator pwd-strength-gray" key="pwdstrindicator3" />,
       ];
   }
 };
 
+/* eslint-disable jsx-a11y/label-has-for */
+/* it's not working, don't forget to find out why */
 const PasswordInput = props => (
-  <div className="input-element">
-    <div className="input-label">{props.label}</div>
+  <div className="input-element password-form">
+    <label htmlFor="new-password" className="input-label">
+      {props.label}
+    </label>
     <input
+      id="new-password"
+      autoComplete="new-password"
       type="password"
-      className="textinput textinput-pwd"
-      style={{
-        borderColor: passwordInputColor(props.password),
-      }}
+      className={`textinput textinput-pwd ${borderColorClass(
+        props.password.passwordStrength.valid,
+        props.password.value,
+      )}`}
       onChange={(e) => {
         props.updatePassword(e.target.value);
       }}

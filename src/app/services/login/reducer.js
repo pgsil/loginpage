@@ -2,6 +2,7 @@ import types from '../types';
 
 const initialState = {
   name: '',
+  validName: false,
   email: '',
   validEmail: false,
   password: {
@@ -24,6 +25,8 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case types.UPDATE_PASSWORD:
       return { ...state, password: action.data };
+    case types.UPDATE_NAME:
+      return { ...state, name: action.name, validName: action.validName };
     case types.UPDATE_EMAIL:
       return { ...state, email: action.email, validEmail: action.validEmail };
     case types.UPDATE_PASSWORD_CONFIRMATION:
